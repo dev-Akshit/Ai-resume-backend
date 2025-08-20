@@ -4,14 +4,14 @@ import { roles } from './app/constants/index.js';
 import { bcryptPass } from './app/libs/encryption.js';
 import userSchema from './app/models/admin.js';
 
-async function genAdmin(email, password, name, phoneNumber) {
+async function genAdmin(email, number, password, name) {
     const passwordHash = await bcryptPass(password);
     const user = await new userSchema({
         name,
         password: passwordHash,
         role: roles.admin,
+        phoneNumber: number,
         email: email,
-        phoneNumber: phoneNumber,
         createdBy: null,
         updatedBy: null,
     }).save();
@@ -19,4 +19,4 @@ async function genAdmin(email, password, name, phoneNumber) {
     process.exit(0);
 }
 
-genAdmin('admin@gmail.com', '1234', 'Admin', '+911234567890');
+genAdmin('admin@gmail.com', '+919876543211', '1234', 'admin');

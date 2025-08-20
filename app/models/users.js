@@ -32,9 +32,11 @@ const schema = new mongoose.Schema({
     },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
+        required: true,
     },
     updatedBy: {
         type: mongoose.Schema.Types.ObjectId,
+        required: true,
     },
     deletedBy: {
         type: mongoose.Schema.Types.ObjectId,
